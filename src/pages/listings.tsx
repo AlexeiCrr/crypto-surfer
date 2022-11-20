@@ -84,43 +84,45 @@ const Listings: FC = () => {
       <div className="container">
         <h1 className="mb-6 text-2xl font-bold">Your Listings</h1>
         {error && <div>failed to load</div>}
-        <div className="mb-6">
-          <Select
-            instanceId={selectId}
-            value={
-              {
-                value: state.currency,
-                label: currencyOptions.find(
-                  (option) => option.value === state.currency
-                )?.label,
-              } as Option
-            }
-            onChange={handleCurrencyChange}
-            options={currencyOptions}
-          />
-        </div>
-        <div>
-          {tokens && (
-            <DataGrid
-              className="rdg-light my-8"
-              columns={columns}
-              rows={tokenRows}
-            />
-          )}
-        </div>
-        <div className="flex">
-          <Button
-            onClick={() => handlePageChange(state.page - 1)}
-            text="Prev"
-            disabled={!data}
-          />
-          <p className="mx-4 min-w-[2rem] text-center"> {state.page}</p>
-          <Button
-            onClick={() => handlePageChange(state.page + 1)}
-            text="Next"
-            disabled={!data}
-          />
-        </div>
+        {tokens && (
+          <>
+            <div className="mb-6">
+              <Select
+                instanceId={selectId}
+                value={
+                  {
+                    value: state.currency,
+                    label: currencyOptions.find(
+                      (option) => option.value === state.currency
+                    )?.label,
+                  } as Option
+                }
+                onChange={handleCurrencyChange}
+                options={currencyOptions}
+              />
+            </div>
+            <div>
+              <DataGrid
+                className="rdg-light my-8"
+                columns={columns}
+                rows={tokenRows}
+              />
+            </div>
+            <div className="flex">
+              <Button
+                onClick={() => handlePageChange(state.page - 1)}
+                text="Prev"
+                disabled={!data}
+              />
+              <p className="mx-4 min-w-[2rem] text-center"> {state.page}</p>
+              <Button
+                onClick={() => handlePageChange(state.page + 1)}
+                text="Next"
+                disabled={!data}
+              />
+            </div>
+          </>
+        )}
       </div>
     </Main>
   );
