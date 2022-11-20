@@ -7,15 +7,15 @@
 Run the following command on your local environment:
 
 ```shell
-git clone --depth=1 https://github.com/ixartz/Next-js-Boilerplate.git my-project-name
+git clone --depth=1 https://github.com/AlexeiCrr/crypto-surfer.git my-project-name
 cd my-project-name
-npm install
+yarn
 ```
 
 Then, you can run locally in development mode with live reload:
 
 ```shell
-npm run dev
+yarn dev
 ```
 
 Open http://localhost:3000 with your favorite browser to see your project.
@@ -53,8 +53,8 @@ You can easily configure Next js Boilerplate. Please change the following file:
 You can see the results locally in production mode with:
 
 ```shell
-$ npm run build
-$ npm run start
+$ yarn build
+$ yarn start
 ```
 
 The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
@@ -62,12 +62,8 @@ The generated HTML and CSS files are minified (built-in feature from Next js). I
 You can create an optimized production build with:
 
 ```shell
-npm run build-prod
+yarn build-prod
 ```
-
-### Testing
-
-All tests are colocated with the source code inside the same directory. So, it makes it easier to find them. Unfortunately, it is not possible with the `pages` folder which is used by Next.js for routing. So, what is why we have a `pages.test` folder to write tests from files located in `pages` folder.
 ### License
 
 Licensed under the MIT License, Copyright © 2022

@@ -72,7 +72,6 @@ const Listings: FC = () => {
     };
   });
 
-  if (error) return <div>failed to load</div>;
   return (
     <Main
       meta={
@@ -84,6 +83,7 @@ const Listings: FC = () => {
     >
       <div className="container">
         <h1 className="mb-6 text-2xl font-bold">Your Listings</h1>
+        {error && <div>failed to load</div>}
         <div className="mb-6">
           <Select
             instanceId={selectId}
