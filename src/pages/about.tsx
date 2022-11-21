@@ -6,10 +6,9 @@ const About = () => (
     <div>
       <p className="mb-2 mt-0">Thank you for reviewing my test task.</p>
       <p>
-        I hope you will find it good. Sorry i couldn not use Java for Backend,
-        but i have not written Java Code for more than a year and barely
-        remember how to set up everything fast. I am a Front-end developer that
-        wrote some backend when it was needed 😀.
+        I have used Node JS since I could rapidly set-up the backend environment
+        and use it for the purpose of this task efficiently. I hope you will
+        like it.
       </p>
     </div>
   </Main>
