@@ -63,16 +63,18 @@ const Listings: FC = () => {
 
   if (error) return <div>failed to load</div>;
 
-  const tokenRows = tokens.map((token) => {
-    return {
-      ...token,
-      image: (
-        <>
-          <img src={token.image} alt={token.id} className="w-4" />
-        </>
-      ),
-    };
-  });
+  const tokenRows =
+    tokens &&
+    tokens.map((token) => {
+      return {
+        ...token,
+        image: (
+          <>
+            <img src={token.image} alt={token.id} className="w-4" />
+          </>
+        ),
+      };
+    });
 
   return (
     <Main
