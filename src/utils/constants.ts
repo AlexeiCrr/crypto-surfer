@@ -19,5 +19,4 @@ export interface Coin {
 export interface Option {
   value: string;
   label: string;
-  symbol?: string;
 }

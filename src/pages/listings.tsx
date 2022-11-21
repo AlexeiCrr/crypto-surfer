@@ -16,12 +16,12 @@ import { CURRENCY } from '@/utils/constants';
 import { fetcher } from '@/utils/fetcher';
 
 const currencyOptions: Option[] = [
-  { value: CURRENCY.EUR, label: 'Euro', symbol: '$' },
-  { value: CURRENCY.USD, label: 'USD', symbol: '€' },
-  { value: CURRENCY.GBP, label: 'Pound Sterling', symbol: '£' },
-  { value: CURRENCY.CHF, label: 'Swiss Franc', symbol: 'CHf' },
-  { value: CURRENCY.CAD, label: 'Canadian Dollar', symbol: 'C$' },
-  { value: CURRENCY.AUD, label: 'Australlian Dollar', symbol: 'A$' },
+  { value: CURRENCY.EUR, label: 'Euro' },
+  { value: CURRENCY.USD, label: 'USD' },
+  { value: CURRENCY.GBP, label: 'Pound Sterling' },
+  { value: CURRENCY.CHF, label: 'Swiss Franc' },
+  { value: CURRENCY.CAD, label: 'Canadian Dollar' },
+  { value: CURRENCY.AUD, label: 'Australlian Dollar' },
 ];
 
 const columns = [
@@ -61,6 +61,8 @@ const Listings: FC = () => {
     }
   }, [data, error]);
 
+  if (error) return <div>failed to load</div>;
+
   const tokenRows = tokens.map((token) => {
     return {
       ...token,
@@ -83,46 +85,43 @@ const Listings: FC = () => {
     >
       <div className="container">
         <h1 className="mb-6 text-2xl font-bold">Your Listings</h1>
-        {error && <div>failed to load</div>}
-        {tokens && (
-          <>
-            <div className="mb-6">
-              <Select
-                instanceId={selectId}
-                value={
-                  {
-                    value: state.currency,
-                    label: currencyOptions.find(
-                      (option) => option.value === state.currency
-                    )?.label,
-                  } as Option
-                }
-                onChange={handleCurrencyChange}
-                options={currencyOptions}
-              />
-            </div>
-            <div>
-              <DataGrid
-                className="rdg-light my-8"
-                columns={columns}
-                rows={tokenRows}
-              />
-            </div>
-            <div className="flex">
-              <Button
-                onClick={() => handlePageChange(state.page - 1)}
-                text="Prev"
-                disabled={!data}
-              />
-              <p className="mx-4 min-w-[2rem] text-center"> {state.page}</p>
-              <Button
-                onClick={() => handlePageChange(state.page + 1)}
-                text="Next"
-                disabled={!data}
-              />
-            </div>
-          </>
-        )}
+        <div className="mb-6">
+          <Select
+            instanceId={selectId}
+            value={
+              {
+                value: state.currency,
+                label: currencyOptions.find(
+                  (option) => option.value === state.currency
+                )?.label,
+              } as Option
+            }
+            onChange={handleCurrencyChange}
+            options={currencyOptions}
+          />
+        </div>
+        <div>
+          {tokens && (
+            <DataGrid
+              className="rdg-light my-8"
+              columns={columns}
+              rows={tokenRows}
+            />
+          )}
+        </div>
+        <div className="flex">
+          <Button
+            onClick={() => handlePageChange(state.page - 1)}
+            text="Prev"
+            disabled={!data}
+          />
+          <p className="mx-4 min-w-[2rem] text-center"> {state.page}</p>
+          <Button
+            onClick={() => handlePageChange(state.page + 1)}
+            text="Next"
+            disabled={!data}
+          />
+        </div>
       </div>
     </Main>
   );
