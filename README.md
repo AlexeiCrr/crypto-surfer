@@ -47,8 +47,6 @@ You can see the results locally by running:
 $ yarn dev
 ```
 
-The generated HTML and CSS files are minified (built-in feature from Next js). It will also removed unused CSS from [Tailwind CSS](https://tailwindcss.com).
-
 You can create an optimized production build with:
 
 ```shell
